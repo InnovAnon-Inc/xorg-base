@@ -17,3 +17,6 @@ RUN extract.sh                                              \
  && ln -svf $XORG_PREFIX/share/X11 /usr/share/X11           \
  && ln -svf $XORG_PREFIX /usr/X11R6
 
+FROM scratch as squash
+COPY --from=builder-01 / /
+
