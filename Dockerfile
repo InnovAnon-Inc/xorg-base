@@ -1,5 +1,10 @@
 FROM innovanon/doom-base:latest as builder-01
-COPY --from=innovanon/sdl /tmp/sdl.txz /tmp/
+COPY --from=innovanon/zlib        /tmp/zlib.txz        /tmp/
+COPY --from=innovanon/bzip2       /tmp/bzip2.txz       /tmp/
+COPY --from=innovanon/xz          /tmp/xz.txz          /tmp/
+COPY --from=innovanon/libpng      /tmp/libpng.txz      /tmp/
+COPY --from=innovanon/jpeg-turbo  /tmp/jpeg-turbo.txz  /tmp/
+COPY --from=innovanon/sdl         /tmp/sdl.txz         /tmp/
 USER root
 COPY ./xorg.sh /etc/profile.d/
 COPY ./xorg    /etc/sudoers.d/
