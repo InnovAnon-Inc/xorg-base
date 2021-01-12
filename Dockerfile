@@ -8,10 +8,7 @@ COPY --from=innovanon/sdl         /tmp/sdl.txz         /tmp/
 USER root
 COPY ./xorg.sh /etc/profile.d/
 COPY ./xorg    /etc/sudoers.d/
-RUN cat   /tmp/*.txz  \
-  | tar Jxf - -i -C / \
- && rm -v /tmp/*.txz  \
- && ldconfig          \
+RUN extract.sh                                              \
  && chmod -v 644 /etc/profile.d/xorg.sh                     \
  && echo "$XORG_PREFIX/lib" >> /etc/ld.so.conf              \
  && if [[ -f /etc/man_db.conf ]] ; then                     \
