@@ -11,6 +11,7 @@ COPY ./xorg    /etc/sudoers.d/
 RUN cat   /tmp/*.txz  \
   | tar Jxf - -i -C / \
  && rm -v /tmp/*.txz  \
+ && ldconfig          \
  && chmod -v 644 /etc/profile.d/xorg.sh                     \
  && echo "$XORG_PREFIX/lib" >> /etc/ld.so.conf              \
  && if [[ -f /etc/man_db.conf ]] ; then                     \
