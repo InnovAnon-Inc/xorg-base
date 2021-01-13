@@ -17,6 +17,10 @@ RUN extract.sh                                              \
  && ln -svf $XORG_PREFIX/share/X11 /usr/share/X11           \
  && ln -svf $XORG_PREFIX /usr/X11R6
 
-FROM scratch as squash
-COPY --from=builder-01 / /
+#FROM builder-01 as squash-tmp
+#USER root
+#RUN  squash.sh
+#FROM scratch as squash
+#ADD --from=squash-tmp /tmp/final.tar /
 
+FROM builder-01
